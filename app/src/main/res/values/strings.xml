@@ -1,4 +1,31 @@
 <resources>
     <string name="app_name">Fishing Record</string>
     <string name="action_settings">Settings</string>
+
+    <string name="fab_take_picture_label">Take a new fish picture!</string>
+    <string name="fab_upload_picture_label">Upload a new fish picture!</string>
+
+    <string name="specie_cod">Cod</string>
+    <string name="specie_coalfish">Coalfish</string>
+    <string name="specie_flounder">Flounder</string>
+    <string name="specie_herring">Herring</string>
+    <string name="specie_mackerel">Mackerel</string>
+    <string name="specie_perch">Perch</string>
+    <string name="specie_pike">Pike</string>
+    <string name="specie_whiting">Whiting</string>
+
+    <string name="view_picture_data_saved">Fish data successfully saved</string>
+
+    <string name="edit_picture_specie">Specie:</string>
+    <string name="edit_picture_location">Catch location:</string>
+    <string name="edit_picture_date">Catch date:</string>
+    <string name="edit_picture_length">Length:</string>
+    <string name="edit_picture_length_unit">cm</string>
+    <string name="edit_picture_weight">Weight:</string>
+    <string name="edit_picture_weight_unit">kg</string>
+    <string name="edit_picture_save_data">Save Catch</string>
+
+    <string name="item_photo_length">%s cm</string>
+    <string name="item_photo_weight">%s kg</string>
+
 </resources>

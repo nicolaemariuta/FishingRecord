@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_photo_height"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@+id/itemPhoto_icon"
+        android:layout_width="@dimen/item_photo_height"
+        android:layout_height="@dimen/item_photo_height"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        style="@style/EditPhotoDataTextStyle"
+        android:id="@+id/itemPhoto_specie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemPhoto_icon"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/item_photo__margins_between_texts"
+        android:layout_marginTop="@dimen/item_photo__margins_between_texts"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"/>
+
+    <TextView
+        style="@style/EditPhotoDataTextStyle"
+        android:id="@+id/itemPhoto_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/item_photo__margins_between_texts"
+        android:layout_marginTop="@dimen/item_photo__margins_between_texts"
+        android:textStyle="italic"/>
+
+    <TextView
+        style="@style/EditPhotoDataTextStyle"
+        android:id="@+id/itemPhoto_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemPhoto_icon"
+        android:layout_below="@+id/itemPhoto_specie"
+        android:layout_marginLeft="@dimen/item_photo__margins_between_texts"
+        android:layout_marginTop="@dimen/item_photo__margins_between_texts" />
+
+    <TextView
+        style="@style/EditPhotoDataTextStyle"
+        android:id="@+id/itemPhoto_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemPhoto_icon"
+        android:layout_below="@+id/itemPhoto_length"
+        android:layout_marginLeft="@dimen/item_photo__margins_between_texts"
+        android:layout_marginTop="@dimen/item_photo__margins_between_texts" />
+
+
+    <TextView
+        style="@style/EditPhotoDataTextStyle"
+        android:id="@+id/itemPhoto_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/itemPhoto_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/item_photo__margins_between_texts"
+        android:layout_marginTop="@dimen/item_photo__margins_between_texts"
+        android:layout_marginBottom="@dimen/item_photo__margins_between_texts" />
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/itemPhoto_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/ic_delete"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginRight="@dimen/item_photo__margins_between_texts"
+        android:layout_marginBottom="@dimen/item_photo__margins_between_texts"/>
+
+</RelativeLayout>

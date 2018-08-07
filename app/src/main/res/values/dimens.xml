@@ -1,3 +1,18 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
+
+    <dimen name="app_fab_elevation">9dp</dimen>
+    <dimen name="app_fab_label_margin">2dp</dimen>
+    <dimen name="app_fab_label_padding">8dp</dimen>
+
+    <dimen name="edit_catch_sides_margins">16dp</dimen>
+    <dimen name="edit_catch_margins_between_texts">4dp</dimen>
+    <dimen name="edit_catch_margins_between_lines">8dp</dimen>
+    <dimen name="edit_catch_long_edittext_length">100dp</dimen>
+    <dimen name="edit_catch_short_edittext_length">100dp</dimen>
+
+    <dimen name="item_photo_height">100dp</dimen>
+    <dimen name="item_photo__margins_between_texts">8dp</dimen>
+
 </resources>

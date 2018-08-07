@@ -26,4 +26,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'net.danlew:android.joda:2.9.9.4'
+    implementation 'com.jakewharton.timber:timber:4.1.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    // If you want to bind to Android-specific lifecycles
+    implementation('com.trello:rxlifecycle-android:1.0') {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+
+    // Dagger2
+    implementation 'com.google.dagger:dagger:2.10'
+
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
+    testImplementation 'com.google.dagger:dagger:2.10'
+    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.10'
 }
