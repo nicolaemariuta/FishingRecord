@@ -8,26 +8,24 @@ public class FishPicture implements Serializable {
 
     private int id;
     private FishSpecie specie;
-    private String imagePath;
+    private String imageUrl;
     private String catchLocation;
     private DateTime catchDate;
     private String length;
     private String weight;
 
-
     public FishPicture(){
 
     }
 
-
-    public FishPicture(String imagePath){
-        this.imagePath = imagePath;
+    public FishPicture(String imageUrl){
+        this.imageUrl = imageUrl;
     }
 
 
-    public FishPicture(FishSpecie specie, String imagePath, String catchLocation, DateTime catchDate, String length, String weight) {
+    public FishPicture(FishSpecie specie, String imageUrl, String catchLocation, DateTime catchDate, String length, String weight) {
         this.specie = specie;
-        this.imagePath = imagePath;
+        this.imageUrl = imageUrl;
         this.catchLocation = catchLocation;
         this.catchDate = catchDate;
         this.length = length;
@@ -35,10 +33,10 @@ public class FishPicture implements Serializable {
     }
 
 
-    public FishPicture(int id, FishSpecie specie, String imagePath, String catchLocation, DateTime catchDate, String length, String weight) {
+    public FishPicture(int id, FishSpecie specie, String imageUrl, String catchLocation, DateTime catchDate, String length, String weight) {
         this.id = id;
         this.specie = specie;
-        this.imagePath = imagePath;
+        this.imageUrl = imageUrl;
         this.catchLocation = catchLocation;
         this.catchDate = catchDate;
         this.length = length;
@@ -53,8 +51,8 @@ public class FishPicture implements Serializable {
         return specie;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public String getCatchLocation() {
@@ -81,8 +79,8 @@ public class FishPicture implements Serializable {
         this.specie = specie;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void setCatchLocation(String catchLocation) {

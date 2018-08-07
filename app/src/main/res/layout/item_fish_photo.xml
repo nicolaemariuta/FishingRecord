@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_photo_height"
     android:background="?android:attr/selectableItemBackground"
-    android:clickable="true">
+    android:clickable="true"
+    android:id="@+id/itemPhoto_layout">
 
     <ImageView
         android:id="@+id/itemPhoto_icon"
         android:layout_width="@dimen/item_photo_height"
         android:layout_height="@dimen/item_photo_height"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:scaleType="centerCrop"/>
 
     <TextView
         style="@style/EditPhotoDataTextStyle"

@@ -13,6 +13,6 @@
     <dimen name="edit_catch_short_edittext_length">100dp</dimen>
 
     <dimen name="item_photo_height">100dp</dimen>
-    <dimen name="item_photo__margins_between_texts">8dp</dimen>
+    <dimen name="item_photo__margins_between_texts">4dp</dimen>
 
 </resources>

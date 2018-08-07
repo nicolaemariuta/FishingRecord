@@ -23,6 +23,8 @@ public class DataServiceImpl implements DataService {
             @Override
             public void call(Subscriber<? super FishPicture> subscriber) {
                 try{
+                    //I need to return the FishPicture because now it contains the id
+                    // from the database which will be needed for updating the entry
                     subscriber.onNext(appDbHandler.addFishPicture(fishPicture));
                 } catch (Exception e){
                     Timber.e(e, "Problem adding a new FishPicture entry into DataBase" + e.getMessage());

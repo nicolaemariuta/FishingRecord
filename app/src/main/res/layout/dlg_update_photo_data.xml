@@ -149,9 +149,10 @@
     <Button
         android:id="@+id/editFishPicture_save"
         android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/edit_catch_sides_margins"
         android:layout_marginBottom="@dimen/edit_catch_sides_margins"
+        android:padding="8dp"
         android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
         android:textColor="@color/white_not_transparent"

@@ -27,7 +27,7 @@ public enum FishSpecie {
         return nameStringId;
     }
 
-    public static String[] getAllFishNamesList(Context context){
+    public static String[] getAllFishNames(Context context){
 
         FishSpecie[] allValues = FishSpecie.values();
         String[] fishSpecies = new String[allValues.length];

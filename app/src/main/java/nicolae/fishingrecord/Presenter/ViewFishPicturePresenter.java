@@ -3,13 +3,11 @@ package nicolae.fishingrecord.Presenter;
 import javax.inject.Inject;
 
 import nicolae.fishingrecord.Data.FishPicture;
-import nicolae.fishingrecord.Data.FishSpecie;
 import nicolae.fishingrecord.UseCases.AddFishPictureUseCase;
-import nicolae.fishingrecord.UseCases.GetFishPictureUseCase;
 import nicolae.fishingrecord.UseCases.UpdateFishPictureUseCase;
 import rx.Subscriber;
 
-public class ViewFishPhotoPresenter {
+public class ViewFishPicturePresenter extends BasePresenter{
 
     private ViewFishPhotoListener listener;
     private FishPicture currentFishPicture;
@@ -17,13 +15,11 @@ public class ViewFishPhotoPresenter {
 
     private final AddFishPictureUseCase addFishPictureUseCase;
     private final UpdateFishPictureUseCase updateFishPictureUseCase;
-    private final GetFishPictureUseCase getFishPictureUseCase;
 
     @Inject
-    public ViewFishPhotoPresenter(AddFishPictureUseCase addFishPictureUseCase, UpdateFishPictureUseCase updateFishPictureUseCase, GetFishPictureUseCase getFishPictureUseCase) {
+    public ViewFishPicturePresenter(AddFishPictureUseCase addFishPictureUseCase, UpdateFishPictureUseCase updateFishPictureUseCase) {
         this.addFishPictureUseCase = addFishPictureUseCase;
         this.updateFishPictureUseCase = updateFishPictureUseCase;
-        this.getFishPictureUseCase = getFishPictureUseCase;
     }
 
 
@@ -36,10 +32,6 @@ public class ViewFishPhotoPresenter {
 
         if(isNewPicture)
             listener.showEditPhotoDataDialog(currentFishPicture);
-
-
-
-
     }
 
     public void editPhotoClicked(){
@@ -63,14 +55,12 @@ public class ViewFishPhotoPresenter {
 
                 @Override
                 public void onNext(FishPicture fishPicture) {
-                    ViewFishPhotoPresenter.this.currentFishPicture = fishPicture;
+                    ViewFishPicturePresenter.this.currentFishPicture = fishPicture;
                     listener.showPictureDataSavedSuccessful();
                 }
             });
 
-
         } else {
-
             updateFishPictureUseCase.execute(fishPicture, new Subscriber<Void>() {
                 @Override
                 public void onCompleted() {
@@ -87,14 +77,8 @@ public class ViewFishPhotoPresenter {
                     listener.showPictureDataSavedSuccessful();
                 }
             });
-
         }
-
     }
-
-
-
-
 
     public interface ViewFishPhotoListener {
 

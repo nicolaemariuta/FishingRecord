@@ -11,18 +11,15 @@ public class StringUtils {
         return date.toString(ISODateTimeFormat.dateTime().withLocale(Locale.ENGLISH).withZoneUTC());
     }
 
-
     public static DateTime fromString(String dateStr) {
         return ISODateTimeFormat.dateTime().withLocale(Locale.ENGLISH).withZoneUTC().parseDateTime(dateStr);
     }
 
     public static boolean isEmpty(String text) {
-        if (text == null) {
+        if (text == null)
             return true;
-        }
 
         return text.trim().length() == 0;
-
     }
 
 }

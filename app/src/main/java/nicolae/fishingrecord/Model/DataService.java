@@ -7,7 +7,6 @@ import rx.Observable;
 
 public interface DataService {
 
-
     Observable<FishPicture> addFishPicture(FishPicture fishPicture);
 
     Observable<Void> deleteFishPicture(FishPicture fishPicture);
@@ -17,7 +16,5 @@ public interface DataService {
     Observable<List<FishPicture>> getAllFishPictures();
 
     Observable<Void> updateFishPicture(FishPicture fishPicture);
-
-
 
 }

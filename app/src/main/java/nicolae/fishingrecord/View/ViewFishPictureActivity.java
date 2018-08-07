@@ -1,34 +1,21 @@
 package nicolae.fishingrecord.View;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.clans.fab.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
 import javax.inject.Inject;
 
 import nicolae.fishingrecord.Data.FishPicture;
-import nicolae.fishingrecord.Presenter.ViewFishPhotoPresenter;
+import nicolae.fishingrecord.Presenter.ViewFishPicturePresenter;
 import nicolae.fishingrecord.R;
 
-public class ViewFishPhotoActivity extends FishinRecordActivity implements ViewFishPhotoPresenter.ViewFishPhotoListener, UpdateFishPhotoDataDialog.UpdateFishPhotoDialogListener {
+public class ViewFishPictureActivity extends FishinRecordActivity implements ViewFishPicturePresenter.ViewFishPhotoListener, UpdateFishPictureDataDialog.UpdateFishPhotoDialogListener {
 
 
     public static final String FISH_PHOTO_TO_DISPLAY = "FishPhotoToDisplay";
@@ -39,7 +26,7 @@ public class ViewFishPhotoActivity extends FishinRecordActivity implements ViewF
     private FloatingActionButton mEditFishPictureData;
 
     @Inject
-    ViewFishPhotoPresenter presenter;
+    ViewFishPicturePresenter presenter;
 
     private PhotoView mFishPhoto;
     private FloatingActionButton mEditPhotoData;
@@ -50,9 +37,9 @@ public class ViewFishPhotoActivity extends FishinRecordActivity implements ViewF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_fish_photo);
         getComponent().inject(this);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         mFishPhoto = (PhotoView) findViewById(R.id.fishPicture);
@@ -73,11 +60,28 @@ public class ViewFishPhotoActivity extends FishinRecordActivity implements ViewF
 
     }
 
+    @Override
+    protected void onPause() {
+        presenter.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        presenter.stop();
+        super.onStop();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     @Override
     public void displayPicture(FishPicture fishPicture) {
 
-        String urlStr = Uri.parse(fishPicture.getImagePath()).buildUpon().build().toString();
+        String urlStr = Uri.parse(fishPicture.getImageUrl()).buildUpon().build().toString();
         Picasso.Builder builder = new Picasso.Builder(this);
         builder.listener(new Picasso.Listener() {
             @Override
@@ -95,8 +99,8 @@ public class ViewFishPhotoActivity extends FishinRecordActivity implements ViewF
 
     @Override
     public void showEditPhotoDataDialog(FishPicture currentFishPicture) {
-        UpdateFishPhotoDataDialog dialog = UpdateFishPhotoDataDialog.newInstance(currentFishPicture);
-        dialog.show(getSupportFragmentManager(), UpdateFishPhotoDataDialog.TAG);
+        UpdateFishPictureDataDialog dialog = UpdateFishPictureDataDialog.newInstance(currentFishPicture);
+        dialog.show(getSupportFragmentManager(), UpdateFishPictureDataDialog.TAG);
     }
 
     @Override

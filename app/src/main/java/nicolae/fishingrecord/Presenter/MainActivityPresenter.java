@@ -10,7 +10,7 @@ import nicolae.fishingrecord.UseCases.GetAllFishPicturesUseCase;
 import rx.Observer;
 import rx.Subscriber;
 
-public class MainActivityPresenter {
+public class MainActivityPresenter extends BasePresenter {
 
     private MainActivityListener listener;
 
@@ -25,7 +25,16 @@ public class MainActivityPresenter {
 
     public void init(final MainActivityListener listener){
         this.listener = listener;
+    }
 
+    @Override
+    public void resume() {
+        super.resume();
+        updateFishPicturesList();
+    }
+
+
+    private void updateFishPicturesList(){
         getAllFishPicturesUseCase.execute(null, new Observer<List<FishPicture>>() {
             @Override
             public void onCompleted() {
@@ -42,9 +51,9 @@ public class MainActivityPresenter {
                 listener.updateFishingPhotosList(fishPictures);
             }
         });
-
-
     }
+
+
 
 
     public void onDeletePicture(final FishPicture picture) {
@@ -64,24 +73,18 @@ public class MainActivityPresenter {
                 listener.deletePictureCompleted(picture);
             }
         });
-
-
     }
 
-
-
-
-
-    public void onDownloadFishPictureClicked() {
-        listener.downloadFishPicture();
+    public void onImportFishPictureClicked() {
+        listener.importFishPicture();
     }
 
 
     public void onTakeFishPictureClicked() {
-        listener.showTakeFishPictureCameraScreen();
+        listener.takePictureUsingCamera();
     }
 
-    public void onNewPictureDownloaded(FishPicture fishPicture) {
+    public void onNewPictureImported(FishPicture fishPicture) {
         listener.showDisplayPictureScreen(fishPicture);
     }
 
@@ -93,9 +96,9 @@ public class MainActivityPresenter {
 
         void showError(String error);
 
-        void downloadFishPicture();
+        void importFishPicture();
 
-        void showTakeFishPictureCameraScreen();
+        void takePictureUsingCamera();
 
         void showDisplayPictureScreen(FishPicture fishPicture);
 

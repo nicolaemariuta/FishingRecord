@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -33,6 +34,9 @@ public class FishPhotosListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.listListener = fishPhotosListListener;
     }
 
+    public void setFishPictures(List<FishPicture> newFishPictures) {
+        this.fishPictures = newFishPictures;
+    }
 
     @NonNull
     @Override
@@ -47,7 +51,7 @@ public class FishPhotosListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         FishImageViewHolder holder = (FishImageViewHolder) viewHolder;
 
 
-        String urlStr = Uri.parse(picture.getImagePath()).buildUpon().build().toString();
+        String urlStr = Uri.parse(picture.getImageUrl()).buildUpon().build().toString();
         Picasso.Builder builder = new Picasso.Builder(context);
         builder.listener(new Picasso.Listener() {
             @Override
@@ -58,11 +62,10 @@ public class FishPhotosListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         urlStr = "file:" + urlStr;
         builder.build().load(urlStr).into(holder.fishPicture);
 
-
         holder.fishSpecie.setText(picture.getSpecie().getNameStringId());
         holder.catchDate.setText(picture.getCatchDate().toString(DateTimeFormat.forPattern("dd/MM/yyyy")));
-        holder.catchLength.setText(picture.getLength());
-        holder.catchWeight.setText(picture.getWeight());
+        holder.catchLength.setText(context.getResources().getString(R.string.item_photo_length, picture.getLength()));
+        holder.catchWeight.setText(context.getResources().getString(R.string.item_photo_weight, picture.getWeight()));
         holder.catchLocation.setText(picture.getCatchLocation());
 
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +75,12 @@ public class FishPhotosListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             }
         });
 
-
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listListener.clickedFishPicture(picture);
+            }
+        });
     }
 
     @Override
@@ -86,15 +94,12 @@ public class FishPhotosListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if(position != -1){
             fishPictures.remove(position);
             notifyItemRemoved(position);
-            notifyDataSetChanged();
         }
-
     }
-
-
 
     private static class FishImageViewHolder extends RecyclerView.ViewHolder {
 
+        private RelativeLayout layout;
         private ImageView fishPicture;
         private TextView fishSpecie;
         private TextView catchDate;
@@ -106,6 +111,7 @@ public class FishPhotosListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public FishImageViewHolder(@NonNull View itemView) {
             super(itemView);
+            layout = (RelativeLayout) itemView.findViewById(R.id.itemPhoto_layout);
             fishPicture = (ImageView)itemView.findViewById(R.id.itemPhoto_icon);
             fishSpecie = (TextView) itemView.findViewById(R.id.itemPhoto_specie);
             catchDate = (TextView) itemView.findViewById(R.id.itemPhoto_date);
@@ -117,6 +123,9 @@ public class FishPhotosListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     public interface FishPhotosListListener {
+
+        void clickedFishPicture(FishPicture fishPicture);
+
         void deleteFishPicture(FishPicture fishPicture);
     }
 

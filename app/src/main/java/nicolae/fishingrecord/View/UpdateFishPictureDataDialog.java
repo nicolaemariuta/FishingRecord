@@ -26,7 +26,7 @@ import nicolae.fishingrecord.Utils.StringUtils;
 import nicolae.fishingrecord.R;
 import timber.log.Timber;
 
-public class UpdateFishPhotoDataDialog extends DialogFragment {
+public class UpdateFishPictureDataDialog extends DialogFragment {
 
     public final static String TAG = "UPDATE_FISH_PHOTO_DATA_DIALOG";
     public final static String CURRENT_FISH_PHOTO = "CurrentFishPhoto";
@@ -47,11 +47,10 @@ public class UpdateFishPhotoDataDialog extends DialogFragment {
     private UpdateFishPhotoDialogListener listener;
 
 
-    public static UpdateFishPhotoDataDialog newInstance(FishPicture fishPicture) {
-        UpdateFishPhotoDataDialog dialog = new UpdateFishPhotoDataDialog();
+    public static UpdateFishPictureDataDialog newInstance(FishPicture fishPicture) {
+        UpdateFishPictureDataDialog dialog = new UpdateFishPictureDataDialog();
 
         Bundle args = new Bundle();
-
         args.putSerializable(CURRENT_FISH_PHOTO, fishPicture);
         dialog.setArguments(args);
 
@@ -93,10 +92,9 @@ public class UpdateFishPhotoDataDialog extends DialogFragment {
         myCalendar = Calendar.getInstance();
 
         mSpecieSpinner = (Spinner) getDialog().findViewById(R.id.editFishPicture_specie);
-        mSpecieSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,FishSpecie.getAllFishNamesList(getContext()));
+        mSpecieSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,FishSpecie.getAllFishNames(getContext()));
         mSpecieSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpecieSpinner.setAdapter(mSpecieSpinnerAdapter);
-
 
         mCatchLocation = (EditText) getDialog().findViewById(R.id.editFishPicture_location);
         mCatchDate = (EditText) getDialog().findViewById(R.id.editFishPicture_date);
@@ -107,7 +105,6 @@ public class UpdateFishPhotoDataDialog extends DialogFragment {
         mSaveCatch.setOnClickListener(saveButtonClicked);
 
         initDataForAlreadyRegisteredFishPicture();
-
         setupCatchDatePicker();
     }
 
@@ -119,21 +116,15 @@ public class UpdateFishPhotoDataDialog extends DialogFragment {
         if(!StringUtils.isEmpty(mFishPicture.getCatchLocation()))
             mCatchLocation.setText(mFishPicture.getCatchLocation());
 
-
         if(mFishPicture.getCatchDate() != null){
             mFishPicture.getCatchDate().toCalendar(getResources().getConfiguration().locale);
-            updateLabel();
+            updateDateText();
         }
-
         if(!StringUtils.isEmpty(mFishPicture.getLength()))
             mCatchLength.setText(mFishPicture.getLength());
 
         if(!StringUtils.isEmpty(mFishPicture.getWeight()))
             mCatchWeight.setText(mFishPicture.getWeight());
-
-
-
-
     }
 
 
@@ -147,7 +138,7 @@ public class UpdateFishPhotoDataDialog extends DialogFragment {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
+                updateDateText();
             }
 
         };
@@ -164,10 +155,9 @@ public class UpdateFishPhotoDataDialog extends DialogFragment {
 
     }
 
-    private void updateLabel() {
+    private void updateDateText() {
         String myFormat = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
-
         mCatchDate.setText(sdf.format(myCalendar.getTime()));
     }
 

@@ -1,4 +1,4 @@
-package nicolae.fishingrecord.View;
+package nicolae.fishingrecord.Utils;
 
 
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * @author Sergey.Yakovlev
+ * Separator for the elements in the RecyclerView
  */
 public class DividerItemDecorator extends RecyclerView.ItemDecoration {
     private static final int[] ATTRS = new int[]{android.R.attr.listDivider};

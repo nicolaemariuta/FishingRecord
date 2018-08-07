@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import dagger.Component;
 import nicolae.fishingrecord.View.MainActivity;
-import nicolae.fishingrecord.View.ViewFishPhotoActivity;
+import nicolae.fishingrecord.View.ViewFishPictureActivity;
 
 /**
  * A base component upon which fragment's components may depend.
@@ -21,7 +21,7 @@ public interface ActivityComponent {
 
     void inject(MainActivity mainActivity);
 
-    void inject(ViewFishPhotoActivity viewFishPhotoActivity);
+    void inject(ViewFishPictureActivity viewFishPictureActivity);
 
 
 }

@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import nicolae.fishingrecord.Data.FishPicture;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static nicolae.fishingrecord.View.ViewFishPhotoActivity.FISH_PHOTO_TO_DISPLAY;
-import static nicolae.fishingrecord.View.ViewFishPhotoActivity.NEW_FISH_PHOTO;
+import static nicolae.fishingrecord.View.ViewFishPictureActivity.FISH_PHOTO_TO_DISPLAY;
+import static nicolae.fishingrecord.View.ViewFishPictureActivity.NEW_FISH_PHOTO;
 
 public class Navigator {
 
@@ -25,7 +25,7 @@ public class Navigator {
     }
 
     public void navigateToViewFishPhotoActivity(Activity activity, FishPicture fishPicture, Boolean isNewPicture) {
-        Intent intent = new Intent(activity, ViewFishPhotoActivity.class);
+        Intent intent = new Intent(activity, ViewFishPictureActivity.class);
         intent.putExtra(FISH_PHOTO_TO_DISPLAY, fishPicture);
         intent.putExtra(NEW_FISH_PHOTO, isNewPicture);
         activity.startActivity(intent);
